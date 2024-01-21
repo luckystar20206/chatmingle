@@ -13,14 +13,14 @@
                     <p class="text-base">Create your account to get platform access</p>
                 </div>
 
-                <form action="" class="w-full">
+                <form wire:submit="register" class="w-full">
                     <div class="mb-6">
                         <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
                             Username
                         </label>
                         <input
                             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            name="username" id="username" type="text" placeholder="Username">
+                            wire:model="username" id="username" type="text" placeholder="Username">
                     </div>
                     <div class="mb-6">
                         <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
@@ -28,7 +28,7 @@
                         </label>
                         <input
                             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            name="email" id="email" type="email" placeholder="Email">
+                            wire:model="email" id="email" type="email" placeholder="Email">
                     </div>
                     <div class="mb-6">
                         <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
@@ -36,25 +36,25 @@
                         </label>
                         <input
                             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            name="password" id="password" type="password" placeholder="Password">
+                            wire:model="password" id="password" type="password" placeholder="Password">
                     </div>
                     <div class="mb-6">
-                        <label class="block text-gray-700 text-sm font-bold mb-2" for="confirm-password">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="password_confirmation">
                             Confirm password
                         </label>
                         <input
                             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            name="password_confirmation" id="confirm-password" type="confirm password"
+                            wire:model="password_confirmation" id="password_confirmation" type="password"
                             placeholder="Confirm password">
                     </div>
                     <div class="flex flex-col items-start gap-4">
-                        <button
+                        <button type="submit"
                             class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                             Sign Up
                         </button>
                         <p class="inline-block align-baseline text-sm font-medium">
-                            Already have account ? <a class="font-bold text-blue-500 hover:text-blue-800"
-                                href="{{ route('login') }}">Sign In</a>
+                            Already have account ? <a class="font-bold text-blue-500 hover:text-blue-800" href="/"
+                                wire:navigate>Sign In</a>
                         </p>
                     </div>
                 </form>

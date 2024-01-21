@@ -11,14 +11,10 @@ class RegisterUserController extends Controller
 {
     public function register(Request $request,): RedirectResponse
     {
-        $validate = $request->validate([
-            'username' => 'required|string|max:255|alpha_dash',
-            'email' =>    'required|unique:users,email|max:255',
-            'password' => 'required|string|confirmed|max:255|alpha_dash',
-        ]);
+        $validate = $request->validate([]);
 
         $user = User::create($validate);
 
-        return redirect()->route('register');
+        return redirect()->route('register')->with('toast_success', 'Successfully registered');
     }
 }
