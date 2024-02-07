@@ -8,11 +8,19 @@
     <title>{{ $title ?? 'Page Title' }}</title>
     @vite('resources/css/app.css')
     <link rel="icon" type="image/x-icon" href="{{ asset('assets/image/logo-16x16.png') }}">
+    <link href="
+    https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.min.css" rel="stylesheet">
+    @livewireStyles
 </head>
 
 <body>
-    @include('sweetalert::alert')
     {{ $slot }}
+    @livewireScripts
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <x-livewire-alert::scripts />
+    <script src="{{ asset('vendor/livewire-alert/livewire-alert.js') }}"></script>
+    <x-livewire-alert::flash />
 </body>
 
 </html>

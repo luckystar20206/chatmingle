@@ -53,7 +53,7 @@
                             Sign Up
                         </button>
                         <p class="inline-block align-baseline text-sm font-medium">
-                            Already have account ? <a class="font-bold text-blue-500 hover:text-blue-800" href="/"
+                            Already have account ? <a class="font-bold text-blue-500 hover:text-blue-800" href="/login"
                                 wire:navigate>Sign In</a>
                         </p>
                     </div>

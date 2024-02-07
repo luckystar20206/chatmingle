@@ -16,5 +16,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth')->group(function () {
     Route::get('/counter', App\Livewire\Counter::class)->name('counter');
 });
-Route::get('/', App\Livewire\Login::class)->name('login');
+
+Route::get('/login', App\Livewire\Login::class)->name('login');
 Route::get('/register', App\Livewire\Register::class)->name('register');

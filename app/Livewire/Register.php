@@ -2,15 +2,21 @@
 
 namespace App\Livewire;
 
+
 use App\Models\User;
 use Livewire\Component;
 use Livewire\Attributes\Title;
-use Illuminate\Validation\Rules\Password;
 use Livewire\Attributes\Validate;
+use Illuminate\Validation\Rules\Password;
+use Illuminate\Validation\ValidationException;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
+
 
 #[Title('Register')]
 class Register extends Component
 {
+    use LivewireAlert;
+
 
     #[Validate]
     /**
@@ -35,11 +41,24 @@ class Register extends Component
 
     public function register()
     {
-        $validated = $this->validate();
-        $user = User::create($validated);
+        try {
+            $validated = $this->validate();
+            $user = User::create($validated);
 
-        session()->flash('toast_success', 'Register Successfully');
-        return $this->redirect('/counter', navigate: true);
+            $this->alert('success', 'Register Success !', [
+                'position' => 'top-end',
+                'timer' => 3000,
+                'toast' => true,
+                'timerProgressBar' => true,
+            ]);
+        } catch (ValidationException $e) {
+            $this->alert('error', 'Register Error !', [
+                'position' => 'top-end',
+                'timer' => 3000,
+                'toast' => true,
+                'timerProgressBar' => true,
+            ]);
+        }
     }
 
     public function render()
