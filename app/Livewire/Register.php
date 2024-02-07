@@ -45,18 +45,22 @@ class Register extends Component
             $validated = $this->validate();
             $user = User::create($validated);
 
-            $this->alert('success', 'Register Success !', [
+            $this->flash('success', 'Register Success !', [
                 'position' => 'top-end',
                 'timer' => 3000,
                 'toast' => true,
                 'timerProgressBar' => true,
             ]);
+
+            $this->redirect('/login');
         } catch (ValidationException $e) {
-            $this->alert('error', 'Register Error !', [
-                'position' => 'top-end',
-                'timer' => 3000,
-                'toast' => true,
-                'timerProgressBar' => true,
+            $this->alert('error', 'Register Error!', [
+                'text' => $e->validator->errors()->first(),
+                'position' => 'center',
+                'showConfirmButton' => true,
+                'toast' => false,
+                'timer' => false,
+                'timerProgressBar' => false,
             ]);
         }
     }
