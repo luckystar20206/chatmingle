@@ -3,11 +3,11 @@
         <div class="block w-1/2 p-4 bg-white border border-gray-200 rounded-2xl shadow-[0_3px_10px_rgb(0,0,0,0.2)]">
             <div class="flex items-center">
                 <div class="w-1/2 flex justify-start">
-                    <p class="font-['Poppins'] font-semibold text-xl">Forum Discussion</p>
+                    <p class="font-['Poppins'] font-semibold  text-sm lg:text-xl">Forum Discussion</p>
                 </div>
                 <div class="w-full flex justify-end">
-                    <a href="#_" class="relative inline-block text-lg group" data-modal-target="crud-modal"
-                        data-modal-toggle="crud-modal">
+                    <a href="#_" class="relative inline-block  text-sm lg:text-lg group"
+                        data-modal-target="crud-modal" data-modal-toggle="crud-modal">
                         <span
                             class="relative z-10 block px-5 py-3 overflow-hidden font-medium leading-tight text-gray-800 transition-colors duration-300 ease-out border-2 border-blue-500 rounded-lg group-hover:text-white">
                             <span class="absolute inset-0 w-full h-full px-5 py-3 rounded-lg bg-blue-100"></span>
@@ -25,20 +25,32 @@
     </div>
     <div class="block mx-auto w-2/3 p-4 rounded-2xl bg-blue-500 border border-gray-200">
         <div class="flex items-center justify-between px-2">
-            <p class="text-white font-semibold text-xl">Topic</p>
-            <div class="flex gap-4">
-                <p class="text-white font-semibold text-xl">Replies</p>
-                <p class="text-white font-semibold text-xl">View</p>
-                <p class="text-white font-semibold text-xl">Likes</p>
+            <p class="text-white font-semibold text-sm lg:text-xl">Topic</p>
+            <div class="flex gap-4 text-white font-semibold text-sm lg:text-xl">
+                <p>Replies</p>
+                <p>View</p>
+                <p>Likes</p>
             </div>
         </div>
     </div>
     <div class="block mx-auto w-2/3 p-6 mt-6 rounded-2xl bg-blue-100 bg-opacity-20 border border-gray-200">
-        <div class="flex items-center">
-            <img class="rounded-full w-32 h-32" src="{{ asset('assets/image/default-user.png') }}"
-                alt="image description">
+        <div class="flex gap-6">
+            <div class="flex items-center">
+                <img class="rounded-full w-16 h-16 lg:w-32 lg:h-32" src="{{ asset('assets/image/default-user.png') }}"
+                    alt="image description">
+            </div>
+            <div class="flex flex-col justify-center gap-2">
+                <p class="text-lg font-medium text-blue-500">Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                </p>
+                <div class="flex gap-3 text-blue-500">
+                    <p class="font-medium">username.</p>
+                    <p class="text-slate-500">post time.</p>
+                </div>
+            </div>
         </div>
     </div>
+
+
     <div id="crud-modal" tabindex="-1" aria-hidden="true"
         class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
         <div class="relative p-4 w-full max-w-md max-h-full">
