@@ -9,15 +9,26 @@
     @vite('resources/css/app.css')
     <link rel="icon" type="image/x-icon" href="{{ asset('assets/image/logo-16x16.png') }}">
     <link href="
-    https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.min.css" rel="stylesheet">
     @livewireStyles
+    https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.min.css"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
 </head>
 
 <body>
-    {{ $slot }}
-    @livewireScripts
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+    @if (Auth::check())
+        {{-- @include('livewire.navbar') --}}
+        @livewire('Navbar')
+    @endif
+
+
+    {{ $slot }}
+
+
+    @livewireScripts
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <x-livewire-alert::scripts />
     <script src="{{ asset('vendor/livewire-alert/livewire-alert.js') }}"></script>
     <x-livewire-alert::flash />

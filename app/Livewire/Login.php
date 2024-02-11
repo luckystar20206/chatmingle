@@ -3,15 +3,17 @@
 namespace App\Livewire;
 
 use Livewire\Component;
-use Illuminate\Http\Request;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Validate;
 use Illuminate\Support\Facades\Auth;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Illuminate\Validation\Rules\Password;
 
 #[Title('Login')]
 class Login extends Component
 {
+    use LivewireAlert;
+
     #[Validate]
     /**
      * Define public variables
@@ -29,20 +31,40 @@ class Login extends Component
     {
         return [
             'username' => 'required|string|max:255|alpha_dash',
-            'password' => ['required', 'confirmed', Password::defaults()],
+            'password' => ['required', Password::defaults()],
         ];
     }
 
 
+    /**
+     * Method login user with livewire alert
+     *
+     * @return void
+     */
     public function login()
     {
-        $validated = $this->validate();
-        $authenticate = Auth::attempt($validated);
-        if ($authenticate) {
-            session()->flash('toast_success', 'Login Successfully');
-            return $this->redirect('/counter', navigate: true);
+        try {
+            $validated = $this->validate();
+            $autenticate = Auth::attempt(['username' => $validated['username'], 'password' => $validated['password']]);
+
+            $this->flash('success', 'Login Success !', [
+                'position' => 'top-end',
+                'timer' => 3000,
+                'toast' => true,
+                'timerProgressBar' => true,
+            ]);
+
+            $this->redirect('/forum');
+        } catch (\Throwable $e) {
+            $this->alert('error', 'Register Error!', [
+                'text' => $e->validator->errors()->first(),
+                'position' => 'center',
+                'showConfirmButton' => true,
+                'toast' => false,
+                'timer' => false,
+                'timerProgressBar' => false,
+            ]);
         }
-        return $this->redirect('/login', navigate: true);
     }
 
     public function render()

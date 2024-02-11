@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth')->group(function () {
     Route::get('/counter', App\Livewire\Counter::class)->name('counter');
+    Route::get('/forum', App\Livewire\ForumDiscussion::class)->name('forum');
 });
 
 Route::get('/login', App\Livewire\Login::class)->name('login');

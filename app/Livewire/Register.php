@@ -7,9 +7,10 @@ use App\Models\User;
 use Livewire\Component;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Validate;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Password;
-use Illuminate\Validation\ValidationException;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
+use Illuminate\Validation\ValidationException;
 
 
 #[Title('Register')]
@@ -39,11 +40,20 @@ class Register extends Component
         ];
     }
 
+    /**
+     * Method for register user with livewire alert
+     *
+     * @return void
+     */
     public function register()
     {
         try {
             $validated = $this->validate();
-            $user = User::create($validated);
+            $user = User::create([
+                'username' => $validated['username'],
+                'email' => $validated['email'],
+                'password' => Hash::make($validated['password']),
+            ]);
 
             $this->flash('success', 'Register Success !', [
                 'position' => 'top-end',
