@@ -21,4 +21,9 @@
             </div>
         </div>
     </div>
+    <div class="flex justify-center">
+        <div class="w-1/3 py-4 px-4 bg-red-500">
+            ini modal
+        </div>
+    </div>
 </div>

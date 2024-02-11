@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>{{ $title ?? 'Page Title' }}</title>
-    @vite('resources/css/app.css')
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link rel="icon" type="image/x-icon" href="{{ asset('assets/image/logo-16x16.png') }}">
     <link href="
     @livewireStyles
@@ -18,7 +18,6 @@
 <body>
 
     @if (Auth::check())
-        {{-- @include('livewire.navbar') --}}
         @livewire('Navbar')
     @endif
 
@@ -27,7 +26,6 @@
 
 
     @livewireScripts
-
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <x-livewire-alert::scripts />
     <script src="{{ asset('vendor/livewire-alert/livewire-alert.js') }}"></script>
