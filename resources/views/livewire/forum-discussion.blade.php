@@ -24,57 +24,58 @@
             </div>
         </div>
     </section>
-
-
-    {{-- Discussion Content Section --}}
-    <section>
-        {{-- Discussion Header --}}
-        <div class="block mx-auto w-2/3 p-4 rounded-2xl bg-blue-500 border border-gray-200">
-            <div class="flex items-center justify-between px-2">
-                <p class="text-white font-semibold text-sm lg:text-xl">Topic</p>
-                <div class="flex gap-6 text-white font-semibold text-sm lg:text-xl">
-                    <p>Replies</p>
-                    <p>View</p>
-                    <p>Likes</p>
-                </div>
-            </div>
-        </div>
-
-        {{-- Discussion Post Likes, Comment and Views --}}
-        <div
-            class="block mx-auto w-2/3 p-6 mt-6 rounded-2xl bg-blue-100 bg-opacity-20 border border-gray-200 shadow-[0_3px_10px_rgb(0,0,0,0.2)]">
-            <div class="flex gap-6">
-                <div class="flex items-center">
-                    <img class="rounded-full w-16 h-16 lg:w-32 lg:h-32"
-                        src="{{ asset('assets/image/default-user.png') }}" alt="image description">
-                </div>
-                <div class="flex flex-col justify-center gap-2">
-                    <p class="text-lg font-medium text-blue-500">Lorem ipsum dolor sit amet consectetur, adipisicing
-                        elit.
-                    </p>
-                    <div class="flex gap-3 text-blue-500">
-                        <p class="font-medium">username.</p>
-                        <p class="text-slate-500">post time.</p>
-                    </div>
-                </div>
-                <div class="flex items-center ml-auto gap-7 text-blue-500">
-                    <div class="flex flex-col text-sm lg:text-lg">
-                        <p class="font-medium text-center">10</p>
-                        <p class="text-blue-300">Replies</p>
-                    </div>
-                    <div class="flex flex-col text-sm lg:text-lg">
-                        <p class="font-medium text-center">10</p>
-                        <p class="text-blue-300">Views</p>
-                    </div>
-                    <div class="flex flex-col text-sm lg:text-lg">
-                        <p class="font-medium text-center">10</p>
-                        <p class="text-blue-300">Likes</p>
+    @forelse ($posts as $posts)
+        {{-- Discussion Content Section --}}
+        <section>
+            {{-- Discussion Header --}}
+            <div class="block mx-auto w-2/3 p-4 rounded-2xl bg-blue-500 border border-gray-200">
+                <div class="flex items-center justify-between px-2">
+                    <p class="text-white font-semibold text-sm lg:text-xl">Topic</p>
+                    <div class="flex gap-6 text-white font-semibold text-sm lg:text-xl">
+                        <p>Replies</p>
+                        <p>View</p>
+                        <p>Likes</p>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
 
+            {{-- Discussion Post Likes, Comment and Views --}}
+            <div
+                class="block mx-auto w-2/3 p-6 mt-6 rounded-2xl bg-blue-100 bg-opacity-20 border border-gray-200 shadow-[0_3px_10px_rgb(0,0,0,0.2)]">
+                <div class="flex gap-6">
+                    <div class="flex items-center">
+                        <img class="rounded-full w-16 h-16 lg:w-32 lg:h-32"
+                            src="{{ asset('assets/image/default-user.png') }}" alt="image description">
+                    </div>
+                    <div class="flex flex-col justify-center gap-2">
+                        <p class="text-lg font-medium text-blue-500">Lorem ipsum dolor sit amet consectetur, adipisicing
+                            elit.
+                        </p>
+                        <div class="flex gap-3 text-blue-500">
+                            <p class="font-medium">username.</p>
+                            <p class="text-slate-500">post time.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center ml-auto gap-7 text-blue-500">
+                        <div class="flex flex-col text-sm lg:text-lg">
+                            <p class="font-medium text-center">10</p>
+                            <p class="text-blue-300">Replies</p>
+                        </div>
+                        <div class="flex flex-col text-sm lg:text-lg">
+                            <p class="font-medium text-center">10</p>
+                            <p class="text-blue-300">Views</p>
+                        </div>
+                        <div class="flex flex-col text-sm lg:text-lg">
+                            <p class="font-medium text-center">10</p>
+                            <p class="text-blue-300">Likes</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    @empty
+        <x-no-Post />
+    @endforelse
     {{-- Discussion Add Modal Section --}}
     <div id="crud-modal" tabindex="-1" aria-hidden="true"
         class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
