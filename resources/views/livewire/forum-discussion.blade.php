@@ -45,14 +45,14 @@
                 <div class="flex gap-6">
                     <div class="flex items-center">
                         <img class="rounded-full w-16 h-16 lg:w-32 lg:h-32"
-                            src="{{ asset('assets/image/default-user.png') }}" alt="image description">
+                            src="{{ asset('assets/image/default-user.png') }}" alt="image body">
                     </div>
                     <div class="flex flex-col justify-center gap-2">
                         <p class="text-lg font-medium text-blue-500">Lorem ipsum dolor sit amet consectetur, adipisicing
                             elit.
                         </p>
                         <div class="flex gap-3 text-blue-500">
-                            <p class="font-medium">username.</p>
+                            <p class="font-medium">usertitle.</p>
                             <p class="text-slate-500">post time.</p>
                         </div>
                     </div>
@@ -76,6 +76,7 @@
     @empty
         <x-no-Post />
     @endforelse
+
     {{-- Discussion Add Modal Section --}}
     <div id="crud-modal" tabindex="-1" aria-hidden="true"
         class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
@@ -98,23 +99,24 @@
                         <span class="sr-only">Close modal</span>
                     </button>
                 </div>
+
                 <!-- Modal body -->
-                <form class="p-4 md:p-5">
+                <form class="p-4 md:p-5" wire:submit='storePost'>
+                    <input type="hidden" wire:model='user_id'>
                     <div class="grid gap-4 mb-4 grid-cols-2">
                         <div class="col-span-2">
-                            <label for="name"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
-                            <input type="text" name="name" id="name"
+                            <label for="title"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Title</label>
+                            <input type="text" title="title" id="title" wire:model='title'
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                placeholder="Type product name" required="">
+                                placeholder="Type product title" required="">
                         </div>
                         <div class="col-span-2">
-                            <label for="description"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Product
-                                Description</label>
-                            <textarea id="description" rows="4"
+                            <label for="body" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                Body</label>
+                            <textarea id="body" rows="4" wire:model='body'
                                 class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                placeholder="Write product description here"></textarea>
+                                placeholder="Write product body here"></textarea>
                         </div>
                     </div>
                     <button type="submit"
