@@ -24,36 +24,36 @@
             </div>
         </div>
     </section>
-    @forelse ($posts as $posts)
+
+    {{-- Discussion Header --}}
+    <div class="block mx-auto w-2/3 mb-8 p-4 rounded-2xl bg-blue-500 border border-gray-200">
+        <div class="flex items-center justify-between px-2">
+            <p class="text-white font-semibold text-sm lg:text-xl">Topic</p>
+            <div class="flex gap-6 text-white font-semibold text-sm lg:text-xl">
+                <p>Replies</p>
+                <p>View</p>
+                <p>Likes</p>
+            </div>
+        </div>
+    </div>
+
+    @forelse ($posts as $post)
         {{-- Discussion Content Section --}}
         <section>
-            {{-- Discussion Header --}}
-            <div class="block mx-auto w-2/3 p-4 rounded-2xl bg-blue-500 border border-gray-200">
-                <div class="flex items-center justify-between px-2">
-                    <p class="text-white font-semibold text-sm lg:text-xl">Topic</p>
-                    <div class="flex gap-6 text-white font-semibold text-sm lg:text-xl">
-                        <p>Replies</p>
-                        <p>View</p>
-                        <p>Likes</p>
-                    </div>
-                </div>
-            </div>
-
             {{-- Discussion Post Likes, Comment and Views --}}
             <div
                 class="block mx-auto w-2/3 p-6 mt-6 rounded-2xl bg-blue-100 bg-opacity-20 border border-gray-200 shadow-[0_3px_10px_rgb(0,0,0,0.2)]">
-                <div class="flex gap-6">
-                    <div class="flex items-center">
+                <div class="flex flex-col items-center md:flex-row lg:flex-row gap-6">
+                    <div class="flex items-center ">
                         <img class="rounded-full w-16 h-16 lg:w-32 lg:h-32"
                             src="{{ asset('assets/image/default-user.png') }}" alt="image body">
                     </div>
                     <div class="flex flex-col justify-center gap-2">
-                        <p class="text-lg font-medium text-blue-500">Lorem ipsum dolor sit amet consectetur, adipisicing
-                            elit.
+                        <p class="text-lg font-medium text-blue-500">{{ $post->title }}
                         </p>
                         <div class="flex gap-3 text-blue-500">
-                            <p class="font-medium">usertitle.</p>
-                            <p class="text-slate-500">post time.</p>
+                            <p class="font-medium text-center">{{ $post->users->username }}</p>
+                            <p class="text-slate-500">{{ $post->created_at }}</p>
                         </div>
                     </div>
                     <div class="flex items-center ml-auto gap-7 text-blue-500">
@@ -107,14 +107,14 @@
                         <div class="col-span-2">
                             <label for="title"
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Title</label>
-                            <input type="text" title="title" id="title" wire:model='title'
+                            <input type="text" title="title" id="title" wire:model='form.title'
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                 placeholder="Type product title" required="">
                         </div>
                         <div class="col-span-2">
                             <label for="body" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                                 Body</label>
-                            <textarea id="body" rows="4" wire:model='body'
+                            <textarea id="body" rows="4" wire:model='form.body'
                                 class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 placeholder="Write product body here"></textarea>
                         </div>
@@ -133,4 +133,5 @@
             </div>
         </div>
     </div>
+
 </div>

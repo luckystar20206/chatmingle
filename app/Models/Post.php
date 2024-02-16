@@ -20,6 +20,6 @@ class Post extends Model
      */
     public function users(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 }
