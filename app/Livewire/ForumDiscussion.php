@@ -39,6 +39,15 @@ class ForumDiscussion extends Component
     }
 
 
+    public function resetModal()
+    {
+        $this->title = '';
+        $this->body = '';
+        $this->user_id = '';
+        $this->emit('');
+    }
+
+
     public function render()
     {
         $user = auth()->user();

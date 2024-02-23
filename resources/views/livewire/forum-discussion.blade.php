@@ -2,13 +2,14 @@
     {{-- Discussion Header Section --}}
     <section class="h-full p-8 flex justify-center">
         <div class="block w-1/2 p-4 bg-white border border-gray-200 rounded-2xl shadow-[0_3px_10px_rgb(0,0,0,0.2)]">
-            <div class="flex items-center">
+            <div class="flex flex-col items-center sm:flex-row gap-4 ">
                 <div class="w-1/2 flex justify-start">
-                    <p class="font-['Poppins'] font-semibold  text-sm lg:text-xl">Forum Discussion</p>
+                    <p class="font-['Poppins'] font-semibold  text-sm lg:text-xl text-center lg:text-start">Forum
+                        Discussion</p>
                 </div>
-                <div class="w-full flex justify-end">
+                <div class="w-full flex justify-center sm:justify-end">
                     <a href="#_" class="relative inline-block  text-sm lg:text-lg group"
-                        data-modal-target="crud-modal" data-modal-toggle="crud-modal">
+                        data-modal-target="create-modal" data-modal-toggle="create-modal">
                         <span
                             class="relative z-10 block px-5 py-3 overflow-hidden font-medium leading-tight text-gray-800 transition-colors duration-300 ease-out border-2 border-blue-500 rounded-lg group-hover:text-white">
                             <span class="absolute inset-0 w-full h-full px-5 py-3 rounded-lg bg-blue-100"></span>
@@ -43,20 +44,23 @@
             {{-- Discussion Post Likes, Comment and Views --}}
             <div
                 class="block mx-auto w-2/3 p-6 mt-6 rounded-2xl bg-blue-100 bg-opacity-20 border border-gray-200 shadow-[0_3px_10px_rgb(0,0,0,0.2)]">
-                <div class="flex flex-col items-center md:flex-row lg:flex-row gap-6">
+                <div class="flex flex-col items-center justify-center lg:flex-row gap-6">
                     <div class="flex items-center ">
                         <img class="rounded-full w-16 h-16 lg:w-32 lg:h-32"
                             src="{{ asset('assets/image/default-user.png') }}" alt="image body">
                     </div>
-                    <div class="flex flex-col justify-center gap-2">
-                        <p class="text-lg font-medium text-blue-500">{{ $post->title }}
+                    <div class="flex flex-col items-center lg:items-start gap-1">
+                        <p class="relative top-2 text-lg font-medium text-blue-500">{{ $post->title }}
                         </p>
-                        <div class="flex gap-3 text-blue-500">
+                        <div class="flex flex-col sm:flex-row gap-3 items-center text-blue-500">
                             <p class="font-medium text-center">{{ $post->users->username }}</p>
                             <p class="text-slate-500">{{ $post->created_at }}</p>
+                            <button type="button"
+                                class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-1.5 text-center mt-2 mb-2">Detail
+                                Post</button>
                         </div>
                     </div>
-                    <div class="flex items-center ml-auto gap-7 text-blue-500">
+                    <div class="flex items-center lg:ml-auto gap-7 text-blue-500">
                         <div class="flex flex-col text-sm lg:text-lg">
                             <p class="font-medium text-center">10</p>
                             <p class="text-blue-300">Replies</p>
@@ -77,8 +81,8 @@
         <x-no-Post />
     @endforelse
 
-    {{-- Discussion Add Modal Section --}}
-    <div id="crud-modal" tabindex="-1" aria-hidden="true"
+    {{-- Add Post Modal Section --}}
+    <div id="create-modal" tabindex="-1" aria-hidden="true"
         class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
         <div class="relative p-4 w-full max-w-md max-h-full">
             <!-- Modal content -->
@@ -90,7 +94,7 @@
                     </h3>
                     <button type="button"
                         class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                        data-modal-toggle="crud-modal">
+                        data-modal-toggle="create-modal">
                         <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                             viewBox="0 0 14 14">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -133,5 +137,6 @@
             </div>
         </div>
     </div>
+
 
 </div>
