@@ -1,4 +1,4 @@
-<div class="min-h-screen">
+<div class="min-h-screen pb-8">
     {{-- Discussion Header Section --}}
     <section class="h-full p-8 flex justify-center">
         <div class="block w-1/2 p-4 bg-white border border-gray-200 rounded-2xl shadow-[0_3px_10px_rgb(0,0,0,0.2)]">
@@ -9,7 +9,7 @@
                 </div>
                 <div class="w-full flex justify-center sm:justify-end">
                     <a href="#_" class="relative inline-block  text-sm lg:text-lg group"
-                        data-modal-target="create-modal" data-modal-toggle="create-modal">
+                        wire:click="$dispatch('openModal', { component: 'modal.forum-discussion.create-post' })">
                         <span
                             class="relative z-10 block px-5 py-3 overflow-hidden font-medium leading-tight text-gray-800 transition-colors duration-300 ease-out border-2 border-blue-500 rounded-lg group-hover:text-white">
                             <span class="absolute inset-0 w-full h-full px-5 py-3 rounded-lg bg-blue-100"></span>
@@ -82,7 +82,7 @@
     @endforelse
 
     {{-- Add Post Modal Section --}}
-    <div id="create-modal" tabindex="-1" aria-hidden="true"
+    {{-- <div id="create-modal" tabindex="-1" aria-hidden="true"
         class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
         <div class="relative p-4 w-full max-w-md max-h-full">
             <!-- Modal content -->
@@ -136,7 +136,7 @@
                 </form>
             </div>
         </div>
-    </div>
+    </div> --}}
 
 
 </div>
