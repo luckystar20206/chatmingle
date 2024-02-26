@@ -26,8 +26,8 @@ class PostForm extends Form
     public function rules()
     {
         return [
-            'title' => 'required|string|max:255|alpha_dash',
-            'body' =>    'required|string|alpha_dash',
+            'title' => 'required|max:255|alpha_dash',
+            'body' =>    'required|alpha_num',
         ];
     }
 
@@ -35,6 +35,7 @@ class PostForm extends Form
     {
         $id = Auth::user()->id;
         $validated = $this->validate();
+
 
         $post = Post::create([
             'title' => $validated['title'],
