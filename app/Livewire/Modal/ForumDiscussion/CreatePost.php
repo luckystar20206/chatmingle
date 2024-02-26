@@ -20,12 +20,14 @@ class CreatePost extends ModalComponent
         try {
             $this->form->storePost();
 
-            $this->alert('success', 'Success created new post !', [
+            $this->flash('success', 'Success created new post !', [
                 'position' => 'top-end',
                 'timer' => 3000,
                 'toast' => true,
                 'timerProgressBar' => true,
             ]);
+
+            $this->redirect('/forum');
         } catch (ValidationException $e) {
             $this->alert('error', 'Register Error!', [
                 'text' => $e->validator->errors()->first(),
