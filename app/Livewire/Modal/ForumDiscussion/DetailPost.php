@@ -3,17 +3,65 @@
 namespace App\Livewire\Modal\ForumDiscussion;
 
 use App\Models\Post;
-use Illuminate\Support\Facades\Gate;
 use LivewireUI\Modal\ModalComponent;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class DetailPost extends ModalComponent
 {
 
-    public $detail_post;
+    use LivewireAlert;
 
-    public function mount(Post $detail_post)
+    public $post;
+
+    protected $listeners = [
+        'confirmed'
+    ];
+
+    public function mount(Post $post)
     {
-        $this->detail_post = $detail_post;
+        $this->post = $post;
+    }
+
+    public function confirmed()
+    {
+        try {
+            $this->post->delete();
+
+            $this->flash('success', 'Success deleted post !', [
+                'position' => 'top-end',
+                'timer' => 3000,
+                'toast' => true,
+                'timerProgressBar' => true,
+            ]);
+
+            $this->redirect('/forum');
+        } catch (\Throwable $th) {
+            $this->alert('error', 'Delete Error!', [
+                'text' => $th,
+                'position' => 'center',
+                'showConfirmButton' => true,
+                'toast' => false,
+                'timer' => false,
+                'timerProgressBar' => false,
+            ]);
+        }
+    }
+
+    public function delete()
+    {
+        $this->alert('warning', 'Post', [
+            'position' => 'center',
+            'timer' => false,
+            'toast' => false,
+            'showConfirmButton' => true,
+            'onConfirmed' => 'confirmed',
+            'input' => 'id',
+            'text' => 'Are you want to delete the post !',
+            'confirmButtonText' => 'Yes',
+            'showDenyButton' => true,
+            'onDenied' => '',
+            'denyButtonText' => 'No',
+        ]);
     }
 
     public function render()

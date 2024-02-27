@@ -4,7 +4,7 @@
             <img class="rounded-full w-16 h-16 lg:w-14 lg:h-14" src="{{ asset('assets/image/default-user.png') }}"
                 alt="image body">
             <div class="flex flex-col items-center text-blue-500">
-                <p class="font-bold text-center">{{ $detail_post->users->username }}</p>
+                <p class="font-bold text-center">{{ $post->users->username }}</p>
             </div>
         </div>
         <button type="button" wire:click="$dispatch('closeModal')"
@@ -19,14 +19,14 @@
     </div>
 
     <div class="flex flex-col p-3 gap-2 text-slate-500">
-        <h4 class="text-xl font-bold">{{ $detail_post->title }}</h4>
+        <h4 class="text-xl font-bold">{{ $post->title }}</h4>
         <p class="text-lg font-medium">
-            {{ $detail_post->body }}
+            {{ $post->body }}
         </p>
         <div class="flex justify-between items-center">
-            <span class="text-sm">{{ $detail_post->created_at->diffForHumans() }}</span>
+            <span class="text-sm">{{ $post->created_at->diffForHumans() }}</span>
             <div class="flex gap-2">
-                <button type="button"
+                <button type="button" wire:click="delete"
                     class="text-red-700 hover:text-white border border-red-700 hover:bg-red-500 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-3 py-1.5 text-center mt-2 mb-2">
                     Delete
                 </button>
