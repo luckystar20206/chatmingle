@@ -53,15 +53,16 @@
                         <p class="relative bottom-0 lg:top-3 text-xl lg:text-lg font-bold text-blue-500">
                             {{ $post->title }}
                         </p>
-                        <div class="flex flex-col lg:flex-row gap-2 items-center text-blue-500">
-                            <div class="flex justify-center gap-3 lg:gap-2 ">
-                                <p class="font-medium text-center">{{ $post->users->username }} - </p>
-                                <p class="text-slate-500">{{ $post->created_at }}</p>
+                        <div class="flex flex-col lg:flex-row gap-8 items-center  text-blue-500">
+                            <p class="font-medium">{{ $post->users->username }}</p>
+                            <div class="flex justify-center items-center gap-3 lg:gap-2 ">
+                                <small
+                                    class="font-light text-slate-500">{{ $post->created_at->diffForHumans() }}</small>
+                                <button type="button"
+                                    wire:click="$dispatch('openModal', { component: 'modal.forum-discussion.detail-post', arguments: {detail_post: {{ $post->id }} }})"
+                                    class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-1.5 text-center mt-2 mb-2">Detail
+                                    Post</button>
                             </div>
-                            <button type="button"
-                                wire:click="$dispatch('openModal', { component: 'modal.forum-discussion.detail-post' })"
-                                class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-1.5 text-center mt-2 mb-2">Detail
-                                Post</button>
                         </div>
                     </div>
                     <div class="flex items-center lg:ml-auto gap-7 text-blue-500">

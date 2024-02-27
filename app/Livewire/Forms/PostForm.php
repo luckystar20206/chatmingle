@@ -27,7 +27,7 @@ class PostForm extends Form
     {
         return [
             'title' => 'required|max:255|alpha_dash',
-            'body' =>    'required|alpha_num',
+            'body' =>    'required',
         ];
     }
 

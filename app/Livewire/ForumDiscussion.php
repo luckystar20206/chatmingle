@@ -4,9 +4,6 @@ namespace App\Livewire;
 
 use App\Models\Post;
 use Livewire\Component;
-use App\Livewire\Forms\PostForm;
-use Illuminate\Validation\ValidationException;
-use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class ForumDiscussion extends Component
 {
