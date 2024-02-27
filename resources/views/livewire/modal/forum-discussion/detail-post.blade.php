@@ -32,7 +32,7 @@
                 </button>
                 <button type="button"
                     class="text-slate-700 hover:text-white border border-slate-700 hover:bg-slate-500 focus:ring-4 focus:outline-none focus:ring-slate-300 font-medium rounded-lg text-sm px-3 py-1.5 text-center mt-2 mb-2">
-                    Update
+                    Edit
                 </button>
             </div>
         </div>
