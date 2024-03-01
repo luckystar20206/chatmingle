@@ -43,7 +43,7 @@
         <section>
             {{-- Discussion Post Likes, Comment and Views --}}
             <div
-                class="block mx-auto w-2/3 p-6 mt-6 rounded-2xl bg-blue-100 bg-opacity-20 border border-gray-200 shadow-[0_3px_10px_rgb(0,0,0,0.2)]">
+                class="block mx-auto w-2/3 p-6 mt-6 rounded-2xl bg-blue-100 bg-opacity-20 border border-gray-200 hover:shadow-[0_3px_10px_rgb(0,0,0,0.2)] cursor-pointer">
                 <div class="flex flex-col items-center justify-center lg:flex-row gap-3">
                     <div class="flex items-center ">
                         <img class="rounded-full w-16 h-16 lg:w-32 lg:h-32"
@@ -53,7 +53,7 @@
                         <p class="relative bottom-0 lg:top-3 text-xl lg:text-lg font-bold text-blue-500">
                             {{ $post->title }}
                         </p>
-                        <div class="flex flex-col lg:flex-row gap-8 items-center  text-blue-500">
+                        <div class="flex flex-col lg:flex-row gap-8 items-center mt-1  text-blue-500">
                             <p class="font-medium">{{ $post->users->username }}</p>
                             <div class="flex justify-center items-center gap-3 lg:gap-2 ">
                                 <small

@@ -26,19 +26,26 @@ class PostForm extends Form
     public function rules()
     {
         return [
-            'title' => 'required|max:255|alpha_dash',
+            'title' => 'required|max:255',
             'body' =>    'required',
         ];
     }
 
+    public function replaceSpacesWithDash($title)
+    {
+        return str_replace(' ', '-', $title);
+    }
+
     public function storePost()
     {
+
         $id = Auth::user()->id;
         $validated = $this->validate();
+        $title = $this->replaceSpacesWithDash($validated['title']);
 
 
         $post = Post::create([
-            'title' => $validated['title'],
+            'title' => $title,
             'body' => $validated['body'],
             'user_id' => $id
         ]);

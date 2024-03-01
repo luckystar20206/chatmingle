@@ -18,5 +18,5 @@ Route::middleware('auth')->group(function () {
     Route::get('/forum', App\Livewire\ForumDiscussion::class)->name('forum');
 });
 
-Route::get('/login', App\Livewire\Login::class)->name('login');
+Route::get('/', App\Livewire\Login::class)->name('login');
 Route::get('/register', App\Livewire\Register::class)->name('register');

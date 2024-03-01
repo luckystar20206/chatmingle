@@ -4,14 +4,16 @@ namespace App\Livewire;
 
 use App\Models\Post;
 use Livewire\Component;
+use Livewire\Attributes\Title;
 
+
+#[Title('Forum Discussion')]
 class ForumDiscussion extends Component
 {
     public function render()
     {
-        $user = auth()->user();
         $posts = Post::with('users')
-            ->where('user_id', $user->id)
+            ->orderBy('created_at', 'desc')
             ->get();
 
         return view('livewire.forum-discussion', ['posts' => $posts]);

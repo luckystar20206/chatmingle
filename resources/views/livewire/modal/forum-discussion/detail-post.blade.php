@@ -18,23 +18,29 @@
         </button>
     </div>
 
-    <div class="flex flex-col p-3 gap-2 text-slate-500">
+    <div class="flex flex-col py-4 px-3 gap-2 text-slate-500 text-justify">
         <h4 class="text-xl font-bold">{{ $post->title }}</h4>
         <p class="text-lg font-medium">
             {{ $post->body }}
         </p>
         <div class="flex justify-between items-center">
-            <span class="text-sm">{{ $post->created_at->diffForHumans() }}</span>
-            <div class="flex gap-2">
-                <button type="button" wire:click="delete"
-                    class="text-red-700 hover:text-white border border-red-700 hover:bg-red-500 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-3 py-1.5 text-center mt-2 mb-2">
-                    Delete
-                </button>
-                <button type="button"
-                    class="text-slate-700 hover:text-white border border-slate-700 hover:bg-slate-500 focus:ring-4 focus:outline-none focus:ring-slate-300 font-medium rounded-lg text-sm px-3 py-1.5 text-center mt-2 mb-2">
-                    Edit
-                </button>
+            <div class="flex items-center gap-2">
+                <p class="font-medium text-blue-500">Created</p>
+                <p class="text-sm">
+                    {{ $post->created_at->diffForHumans() }}</p>
             </div>
+            @if ($post->user_id == auth()->user()->id)
+                <div class="flex gap-2">
+                    <button type="button" wire:click="delete"
+                        class="text-red-700 hover:text-white border border-red-700 hover:bg-red-500 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-3 py-1.5 text-center mt-2 mb-2">
+                        Delete
+                    </button>
+                    <button type="button"
+                        class="text-slate-700 hover:text-white border border-slate-700 hover:bg-slate-500 focus:ring-4 focus:outline-none focus:ring-slate-300 font-medium rounded-lg text-sm px-3 py-1.5 text-center mt-2 mb-2">
+                        Edit
+                    </button>
+                </div>
+            @endif
         </div>
     </div>
 </div>

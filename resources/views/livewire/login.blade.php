@@ -38,7 +38,7 @@
                         </button>
                         <p class="inline-block align-baseline text-sm font-medium">
                             Didn't have account ? <a class="font-bold text-blue-500 hover:text-blue-800"
-                                href="/register" wire:navigate>Sign Up</a>
+                                href="{{ route('register') }}" wire:navigate>Sign Up</a>
                         </p>
                     </div>
                 </form>

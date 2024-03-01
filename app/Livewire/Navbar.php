@@ -26,7 +26,7 @@ class Navbar extends Component
             'timerProgressBar' => true,
         ]);
 
-        $this->redirect('/login');
+        $this->redirectRoute('login');
     }
 
     public function render()

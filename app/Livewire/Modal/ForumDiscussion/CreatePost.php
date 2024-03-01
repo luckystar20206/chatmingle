@@ -27,7 +27,7 @@ class CreatePost extends ModalComponent
                 'timerProgressBar' => true,
             ]);
 
-            $this->redirect('/forum');
+            $this->redirectRoute('forum');
         } catch (ValidationException $e) {
             $this->alert('error', 'Register Error!', [
                 'text' => $e->validator->errors()->first(),
