@@ -10,6 +10,8 @@ class Navbar extends Component
 {
     use LivewireAlert;
 
+    public $isVisible = true;
+
     /**
      * Method logout for user 
      *

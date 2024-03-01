@@ -42,8 +42,8 @@
         {{-- Discussion Content Section --}}
         <section>
             {{-- Discussion Post Likes, Comment and Views --}}
-            <div
-                class="block mx-auto w-2/3 p-6 mt-6 rounded-2xl bg-blue-100 bg-opacity-20 border border-gray-200 hover:shadow-[0_3px_10px_rgb(0,0,0,0.2)] cursor-pointer">
+            <a href="{{ route('detail_post', $post->id) }}"
+                class="block mx-auto w-2/3 p-6 mt-6 rounded-2xl bg-blue-100 bg-opacity-20 border border-gray-200 hover:shadow-[0_3px_10px_rgb(0,0,0,0.2)]">
                 <div class="flex flex-col items-center justify-center lg:flex-row gap-3">
                     <div class="flex items-center ">
                         <img class="rounded-full w-16 h-16 lg:w-32 lg:h-32"
@@ -53,16 +53,9 @@
                         <p class="relative bottom-0 lg:top-3 text-xl lg:text-lg font-bold text-blue-500">
                             {{ $post->title }}
                         </p>
-                        <div class="flex flex-col lg:flex-row gap-8 items-center mt-1  text-blue-500">
+                        <div class="flex flex-col lg:flex-row gap-2 items-center mt-3  text-blue-500">
                             <p class="font-medium">{{ $post->users->username }}</p>
-                            <div class="flex justify-center items-center gap-3 lg:gap-2 ">
-                                <small
-                                    class="font-light text-slate-500">{{ $post->created_at->diffForHumans() }}</small>
-                                <button type="button"
-                                    wire:click="$dispatch('openModal', { component: 'modal.forum-discussion.detail-post', arguments: {post: {{ $post->id }} }})"
-                                    class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-1.5 text-center mt-2 mb-2">Detail
-                                    Post</button>
-                            </div>
+                            <small class="font-light text-slate-500">{{ $post->created_at->diffForHumans() }}</small>
                         </div>
                     </div>
                     <div class="flex items-center lg:ml-auto gap-7 text-blue-500">
@@ -80,7 +73,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </a>
         </section>
     @empty
         <x-no-Post />

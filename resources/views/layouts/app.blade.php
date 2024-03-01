@@ -17,7 +17,7 @@
 
 <body>
 
-    @if (Auth::check())
+    @if (Auth::check() && request()->routeIs('forum'))
         @livewire('Navbar')
     @endif
 

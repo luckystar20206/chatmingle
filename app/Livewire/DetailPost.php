@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Livewire\Modal\ForumDiscussion;
+namespace App\Livewire;
 
 use App\Models\Post;
-use LivewireUI\Modal\ModalComponent;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
+use Livewire\Component;
 
-class DetailPost extends ModalComponent
+class DetailPost extends Component
 {
 
     use LivewireAlert;
@@ -66,6 +66,6 @@ class DetailPost extends ModalComponent
 
     public function render()
     {
-        return view('livewire.modal.forum-discussion.detail-post');
+        return view('livewire.detail-post');
     }
 }
