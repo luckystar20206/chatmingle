@@ -1,4 +1,4 @@
-<div style="background-image: url(../public/assets/image/background-register.png)">
+<div>
     <div class="grid grid-cols-12 p-4">
         {{-- Detail Post Content --}}
         <section class="flex flex-row-reverse items-center col-span-12 gap-8 px-4">
@@ -48,16 +48,10 @@
                     </p>
 
 
-                    <div class="flex pt-2 flex-row gap-1 items-center justify-between">
-                        <div class="flex gap-4 font-bold">
-                            <button class="flex items-center gap-1">
-                                <i class="fa-regular fa-thumbs-up h-6"></i> Like
-                            </button>
-
-                            <button class="flex items-center gap-1">
-                                <i class="fa-solid fa-reply h-6"></i> Reply
-                            </button>
-                        </div>
+                    <div class="flex pt-2 gap-1 items-center justify-between">
+                        <button class="flex items-center gap-1">
+                            <i class="fa-solid fa-reply h-6"></i> Reply
+                        </button>
 
                         <div class="flex flex-col gap-1">
                             <div class="flex items-center gap-2">
@@ -76,33 +70,21 @@
             </section>
 
             {{-- Upvote and Downvote --}}
-            <section class="flex flex-col items-center justify-center gap-3">
-                <button>
-                    <i class="fa-solid fa-arrow-up h-5 text-slate-500 hover:text-green-500 focus:text-green-600"></i>
-                </button>
-                <h1 class="text-3xl text-slate-600">2</h1>
-                <button>
-                    <i class="fa-solid fa-arrow-down h-5  text-slate-500 hover:text-red-500"></i>
-                </button>
-            </section>
+            @livewire('components.vote-button')
         </section>
     </div>
 
 
     {{-- Reply Comments --}}
-    <section class="flex lg:px-[5%] py-2 gap-4">
+    <section class="flex lg:px-[5%] py-2 gap-8">
+
+
         {{-- Upvote and Downvote --}}
-        <section class="flex flex-col items-center justify-center gap-3">
-            <button>
-                <i class="fa-solid fa-arrow-up h-5 text-slate-500 hover:text-green-500 focus:text-green-600"></i>
-            </button>
-            <h1 class="text-3xl text-slate-600">2</h1>
-            <button>
-                <i class="fa-solid fa-arrow-down h-5  text-slate-500 hover:text-red-500"></i>
-            </button>
-        </section>
+        <div class="flex items-center">
+            @livewire('components.vote-button')
+        </div>
 
-
+        
         {{-- Content --}}
         <section>
             <div class="flex items-center justify-between p-4 md:p-5 ">
@@ -142,17 +124,10 @@
                     {{ $post->body }}
                 </p>
 
-
-                <div class="flex pt-2 flex-row gap-1 items-center justify-between">
-                    <div class="flex gap-4 font-bold">
-                        <button class="flex items-center gap-1">
-                            <i class="fa-regular fa-thumbs-up h-6"></i> Like
-                        </button>
-
-                        <button class="flex items-center gap-1">
-                            <i class="fa-solid fa-reply h-6"></i> Reply
-                        </button>
-                    </div>
+                <div class="flex pt-2 gap-1 items-center justify-between">
+                    <button class="flex items-center gap-1">
+                        <i class="fa-solid fa-reply h-6"></i> Reply
+                    </button>
 
                     <div class="flex flex-col gap-1">
                         <div class="flex items-center gap-2">
