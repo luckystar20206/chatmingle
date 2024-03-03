@@ -3,8 +3,11 @@
 namespace App\Livewire;
 
 use App\Models\Post;
-use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
+use Livewire\Attributes\Title;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
+
+#[Title('Detail Forum')]
 
 class DetailPost extends Component
 {

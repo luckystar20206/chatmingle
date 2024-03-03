@@ -42,7 +42,7 @@
         {{-- Discussion Content Section --}}
         <section>
             {{-- Discussion Post Likes, Comment and Views --}}
-            <a href="{{ route('detail_post', $post->id) }}"
+            <a href="{{ route('detail_post', $post->id) }}" wire:navigate
                 class="block mx-auto w-2/3 p-6 mt-6 rounded-2xl bg-blue-100 bg-opacity-20 border border-gray-200 hover:shadow-[0_3px_10px_rgb(0,0,0,0.2)]">
                 <div class="flex flex-col items-center justify-center lg:flex-row gap-3">
                     <div class="flex items-center ">
